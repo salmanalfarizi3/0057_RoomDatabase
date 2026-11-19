@@ -7,16 +7,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.example.prak9.ui.theme.Prak9Theme
-import com.example.prak9.uicontroller.SiswaApp
+import com.example.prak9.ui.theme.MyApplicationTheme
+import com.example.prak9.view.uicontroller.SiswaApp
 
 class MainActivity : ComponentActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContent {
-            Prak9Theme {
+            MyApplicationTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
