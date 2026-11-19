@@ -1,25 +1,22 @@
+
 package com.example.prak9.viewmodel
 
-
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.example.prak9.repositori.RepositoriSiswa
 import com.example.prak9.room.Siswa
-import kotlinx.coroutines.flow.MutableStateFlow
 
 class EntryViewModel(
     private val repositoriSiswa: RepositoriSiswa
 ) : ViewModel() {
 
-    var uiStateSiswa by MutableStateFlow(UIStateSiswa())
+    var uiStateSiswa by mutableStateOf(UIStateSiswa())
         private set
 
-    /**
-     * Fungsi untuk memvalidasi input.
-     */
     private fun validasiInput(
-        uiState: DetailSiswa = uiStateSiswa.detailSiswa
+        uiState: DetailsSiswa = uiStateSiswa.detailsSiswa
     ): Boolean {
         return with(uiState) {
             nama.isNotBlank() &&
@@ -28,44 +25,35 @@ class EntryViewModel(
         }
     }
 
-    fun updateUiState(detailSiswa: DetailSiswa) {
+    fun updateUiState(detailsSiswa: DetailsSiswa) {
         uiStateSiswa = UIStateSiswa(
-            detailSiswa = detailSiswa,
-            isEntryValid = validasiInput(detailSiswa)
+            detailsSiswa = detailsSiswa,
+            isEntryValid = validasiInput(detailsSiswa)
         )
     }
 
-    /**
-     * Fungsi untuk menyimpan data yang di-entry.
-     */
     suspend fun saveSiswa() {
         if (validasiInput()) {
             repositoriSiswa.insertSiswa(
-                uiStateSiswa.detailSiswa.toSiswa()
+                uiStateSiswa.detailsSiswa.toSiswa()
             )
         }
     }
 }
 
-/**
- * Mewakili status UI untuk Siswa.
- */
 data class UIStateSiswa(
-    val detailSiswa: DetailSiswa = DetailSiswa(),
+    val detailsSiswa: DetailsSiswa = DetailsSiswa(),
     val isEntryValid: Boolean = false
 )
 
-data class DetailSiswa(
+data class DetailsSiswa(
     val id: Int = 0,
     val nama: String = "",
     val alamat: String = "",
     val telpon: String = ""
 )
 
-/**
- * Mengonversi data input ke data tabel.
- */
-fun DetailSiswa.toSiswa(): Siswa = Siswa(
+fun DetailsSiswa.toSiswa(): Siswa = Siswa(
     id = id,
     nama = nama,
     alamat = alamat,
@@ -75,11 +63,11 @@ fun DetailSiswa.toSiswa(): Siswa = Siswa(
 fun Siswa.toUiStateSiswa(
     isEntryValid: Boolean = false
 ): UIStateSiswa = UIStateSiswa(
-    detailSiswa = this.toDetailSiswa(),
+    detailsSiswa = this.toDetailsSiswa(),
     isEntryValid = isEntryValid
 )
 
-fun Siswa.toDetailSiswa(): DetailSiswa = DetailSiswa(
+fun Siswa.toDetailsSiswa(): DetailsSiswa = DetailsSiswa(
     id = id,
     nama = nama,
     alamat = alamat,
