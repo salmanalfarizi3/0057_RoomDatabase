@@ -1,11 +1,18 @@
 <resources>
-    <string name="app_name">RoomSiswa</string>
-    <string name="entry_siswa">Tambah Siswa</string>
-    <string name="nama">Nama Siswa</string>
+    <string name="app_name">RoomDB</string>
+    <string name="entry_siswa">Entry Siswa</string>
+    <string name="back">Back</string>
+    <string name="update">Update</string>
+    <string name="delete">Delete</string>
+    <string name="nama">Nama</string>
     <string name="alamat">Alamat</string>
-    <string name="telepon">Nomor Telepon</string>
+    <string name="telpon">Telpon</string>
+    <string name="attention">Perhatian</string>
+    <string name="yes">Ya</string>
+    <string name="no">Tidak</string>
+    <string name="deskripsi_no_item">Tidak ada data siswa</string>
     <string name="btn_submit">Simpan</string>
-    <string name="required_field">Wajib diisi</string>
-    <string name="deskripsi_no_item">Belum ada data siswa.</string>
-    <string name="back">Kembali</string>
+    <string name="required_field">* wajib diisi</string>
+    <string name="edit_siswa">Edit Siswa</string>
+    <string name="detail_siswa">Detail Siswa</string>
 </resources>
