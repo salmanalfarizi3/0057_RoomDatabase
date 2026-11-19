@@ -1,3 +1,4 @@
+
 package com.example.prak9.ui.theme
 
 import android.app.Activity
@@ -34,7 +35,7 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun Prak9Theme(
+fun MyApplicationTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,
